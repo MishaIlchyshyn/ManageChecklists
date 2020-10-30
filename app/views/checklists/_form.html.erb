@@ -18,6 +18,20 @@
         <%= f.text_area :description %>
     </p>
 
+    <div>
+        <p><strong>Questions:</strong></p>
+
+        <div class="checklists">
+            <%= f.fields_for :questions do |question| %>
+                <%= render 'question_fields', f: question %>
+            <% end %>
+
+            <div class="links">
+                <%= link_to_add_association "add question", f, :questions %>
+            </div>
+        </div>
+    </div>
+
     <%= f.submit "Save" %>
     <%= link_to "Cancel", checklists_path %>
 <% end %>

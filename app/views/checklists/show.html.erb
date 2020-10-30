@@ -8,6 +8,20 @@
     Description: <%= @checklist.description %>
 </p>
 
+<h4>Questions:</h4>
+<% if @checklist.questions.any? %>
+    <% @checklist.questions.each do |question| %>
+        <ul>
+            <li>
+                <p><%= question.title %></p>
+                <p><%= question.description %></p>
+            </li>
+        </ul>
+    <% end %>
+<% else %>
+    <p>non question</p>
+<% end %>
+
 <%= link_to "Remove", checklist_path(@checklist), method: :delete, data: { confirm: "Are you sure?" } %>
 
 <%= link_to "Back", checklists_path %>

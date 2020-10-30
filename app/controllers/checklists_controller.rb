@@ -31,7 +31,7 @@ class ChecklistsController < ApplicationController
     private
 
         def checklist_params
-            params.require(:checklist).permit(:title, :description)
+            params.require(:checklist).permit(:title, :description, questions_attributes: [:id, :title, :description, :_destroy])
         end
 
         def set_checklist
