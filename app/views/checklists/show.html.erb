@@ -1,0 +1,13 @@
+<h1>Selected Checklist</h1>
+
+<p>
+    Title: <%= @checklist.title %>
+</p>
+
+<p>
+    Description: <%= @checklist.description %>
+</p>
+
+<%= link_to "Remove", checklist_path(@checklist), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= link_to "Back", checklists_path %>
