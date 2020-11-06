@@ -1,0 +1,23 @@
+<h3>Fill Checklist:</h3>
+
+<% @checklists.each do |checklist| %>
+    <ul>
+        <li><%= link_to checklist.title, new_checklist_audit_path(checklist) %></li>
+    </ul>
+<% end %>
+
+<h1>Audits:</h1>
+
+<% if @audits.any? %>
+    <ul>
+        <% @audits.each do |audit| %>
+            <li>
+                <%= audit.checklistname %>:
+                <%= link_to "Edit" %>
+                <%= link_to "Delete" %>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+    <h3>No audits (</h3>
+<% end %>

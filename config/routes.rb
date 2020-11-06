@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root "pages#index"
 
-  resources :checklists
+  resources :audits
+
+  resources :checklists do
+    resources :audits
+  end
 end

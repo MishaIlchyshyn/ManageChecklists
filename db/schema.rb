@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_30_141019) do
+ActiveRecord::Schema.define(version: 2020_11_05_190149) do
+
+  create_table "answers", force: :cascade do |t|
+    t.string "answer"
+    t.text "comment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "question_id", null: false
+    t.integer "audit_id", null: false
+    t.index ["audit_id"], name: "index_answers_on_audit_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "audits", force: :cascade do |t|
+    t.string "checklistname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "checklist_id", null: false
+    t.index ["checklist_id"], name: "index_audits_on_checklist_id"
+  end
 
   create_table "checklists", force: :cascade do |t|
     t.string "title"
@@ -28,5 +47,8 @@ ActiveRecord::Schema.define(version: 2020_10_30_141019) do
     t.index ["checklist_id"], name: "index_questions_on_checklist_id"
   end
 
+  add_foreign_key "answers", "audits"
+  add_foreign_key "answers", "questions"
+  add_foreign_key "audits", "checklists"
   add_foreign_key "questions", "checklists"
 end
