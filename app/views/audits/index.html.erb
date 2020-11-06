@@ -8,6 +8,8 @@
 
 <h1>Audits:</h1>
 
+<%= link_to "Checklists", checklists_path %>
+
 <% if @audits.any? %>
     <ul>
         <% @audits.each do |audit| %>

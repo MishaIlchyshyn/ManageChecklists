@@ -1,21 +1,14 @@
-<% if @checklist.errors.any? %>
-    <h2>The following errors prevented the checklist from saving:</h2>
-    <ul>
-        <% @checklist.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
+<%= render 'shared/errors', object: @checklist, nested_models: [ @question ] %>
 
 <%= form_for @checklist do |f| %>
     <p>
         <%= f.label :title, "title" %><br>
-        <%= f.text_field :title %>
+        <%= f.text_field :title, :required => true %>
     </p>
 
     <p>
         <%= f.label :description, "description" %><br>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, :required => true %>
     </p>
 
     <div>
