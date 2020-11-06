@@ -1,0 +1,31 @@
+<% if @checklist.audit.nil? %>
+    <%= form_for @audit do |f| %>
+        <p>
+            checklistname: <%= f.text_field :checklistname, :value => @checklist.title %>
+        </p>
+        <p>
+            checklist_id: <%= f.text_field :checklist_id, :value => @checklist.id %>
+        </p>
+
+        <% @checklist.questions.each do |question| %>
+            <%= f.fields_for :answers do |a|  %>           
+                <p>title: <%= question.title %></p>
+                <p>description: <%= question.description %></p>
+                <p><%= a.select :answer, options_for_select(["yes", "no", "NAN"]), :required => true %></p>
+                <p>
+                    <%= a.label :comment %><br>
+                    <%= a.text_area :comment, :required => true %>
+                </p>
+                <p>
+                    question_id: <%= a.text_field :question_id, :value => question.id %>
+                </p>
+            <% end %>
+        <% end %>
+
+        <%= f.submit "Submit" %>
+        <%= link_to "Cancel", audits_path %>
+    <% end %>
+<% else %>
+    <h3>Checklist has audit!</h3>
+    <%= link_to "Cancel", audits_path %>
+<% end %>

@@ -1,0 +1,29 @@
+<% if object.errors.any? %>
+  <div>
+    <strong>
+      <%= pluralize(object.errors.count, 'error') %> were found
+    </strong>
+
+    <ul>
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if defined?(nested_models) && nested_models.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% nested_models.each do |nested_model| %>
+        <% if nested_model.errors.any? %>
+          <ul>
+            <% nested_model.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
