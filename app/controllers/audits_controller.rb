@@ -2,7 +2,7 @@ class AuditsController < ApplicationController
     before_action :set_checklist, only: [:show, :destroy, :new]
 
     def index 
-        @audits = Audit.all
+        @audits = Audit.paginate(page: params[:page], per_page: 10)
         @checklists = Checklist.all
     end
 
