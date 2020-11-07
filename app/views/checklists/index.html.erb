@@ -18,6 +18,8 @@
             </tr>
         <% end %>
     </table>
+
+    <%= will_paginate @checklists, renderer: BootstrapPagination::Rails %>
 <% else %>
     <h3>You don't have a checklist</h2>
 <% end %>
