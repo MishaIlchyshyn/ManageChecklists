@@ -1,7 +1,13 @@
 <h1>Checklists:</h1>
 
-<%= link_to "Audits",  audits_path%>
-<%= link_to "New checklist", new_checklist_path %>
+<%= link_to "Home",  root_path%>
+<%= link_to "Audits", audits_path %>
+<%= link_to "New checklist", user_signed_in? ? new_checklist_path : new_user_session_path %>
+<% if user_signed_in? %>
+    <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+<% else %>
+    <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+<% end %>
 
 <% if @checklists.any? %>
     <table>

@@ -1,4 +1,5 @@
-<h3>Fill Checklist:</h3>
+<%= link_to "Checklists", checklists_path %>
+<h3>Fill Checklist</h3>
 
 <% @checklists.each do |checklist| %>
     <ul>
@@ -7,8 +8,6 @@
 <% end %>
 
 <h1>Audits:</h1>
-
-<%= link_to "Checklists", checklists_path %>
 
 <% if @audits.any? %>
     <ul>
