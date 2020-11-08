@@ -26,6 +26,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'will_paginate-bootstrap4'
 gem 'bootstrap-sass'
+gem 'devise'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
