@@ -1,11 +1,12 @@
 <%= link_to "Checklists", checklists_path %>
 
 <%= link_to 'Fill Checklist', fill_checklist_path,  
-    {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} 
+    {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModal'} 
 %>
 
-<div id="modal-window" class="modal hide" role="dialog" 
-    aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal" 
+    id="exampleModal" tabindex="-1" role="dialog" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 
 <h1>Audits:</h1>
