@@ -1,11 +1,12 @@
 <%= link_to "Checklists", checklists_path %>
-<h3>Fill Checklist</h3>
 
-<% @checklists.each do |checklist| %>
-    <ul>
-        <li><%= link_to checklist.title, new_checklist_audit_path(checklist) %></li>
-    </ul>
-<% end %>
+<%= link_to 'Fill Checklist', fill_checklist_path,  
+    {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window'} 
+%>
+
+<div id="modal-window" class="modal hide" role="dialog" 
+    aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
 
 <h1>Audits:</h1>
 
@@ -19,8 +20,6 @@
             </li>
         <% end %>
     </ul>
-
-    
 <% else %>
     <h3>No audits (</h3>
 <% end %>
