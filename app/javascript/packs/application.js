@@ -2,6 +2,7 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+import JQuery from "jquery";
 
 require("jquery");
 require("@rails/ujs").start();
@@ -19,6 +20,9 @@ require("@nathanvda/cocoon");
 
 import "bootstrap";
 
+window.$ = window.JQuery = JQuery;
+
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip();
+  $('[data-toggle="popover"]').popover();
 });

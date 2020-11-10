@@ -28,6 +28,14 @@ class ChecklistsController < ApplicationController
         redirect_to checklists_path
     end
 
+    def fill_checklist
+        @checklists = Checklist.all
+        respond_to do |format|
+            format.html
+            format.js
+        end
+    end
+
     private
 
         def checklist_params
