@@ -3,7 +3,7 @@ class AuditsController < ApplicationController
 
     def index 
         @audits = Audit.paginate(page: params[:page], per_page: 10)
-        @checklists = Checklist.all
+        @publish_checklists = Publish.all
     end
 
     def new 
