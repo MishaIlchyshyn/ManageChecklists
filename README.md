@@ -1,24 +1,5 @@
-# README
+# Manage Checklists
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### A simple ruby on rails application. The main task of the application is to manage checklists and audits. The user can log in, create and delete checklists, view the list of checklists, create audits to checklists, add checklists to publish, and delete them from there. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## run: "rails s" - for start application on your local mashine
