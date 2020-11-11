@@ -1,28 +1,36 @@
-<%= link_to "Checklists", checklists_path %>
+<% if user_signed_in? %>
+    <%= link_to 'Fill Checklist', fill_checklist_path, 
+    {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModal', 
+    :class => "waves-effect waves-light btn fill-checklist-btn"}  
+%>   
+<% else %>
+    <p></p>
+<% end %>
 
-<%= link_to 'Fill Checklist', fill_checklist_path,  
-    {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#exampleModal'} 
-%>
-
-<div class="modal" 
+<div class="modal modal-content" 
     id="exampleModal" tabindex="-1" role="dialog" 
     aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 
-<h1>Audits:</h1>
+<h2 class="center">Audits:</h2>
 
 <% if @audits.any? %>
-    <ul>
+    <table>
+        <tr>
+            <th>Checklist name</th>
+            <th>Last updated</th>
+            <th colspan="2">Actions</th>
+        </tr>
         <% @audits.each do |audit| %>
-            <li>
-                <%= audit.checklistname %>:
-                <%= link_to "Edit" %>
-                <%= link_to "Delete" %>
-            </li>
+            <tr>
+                <td><%= link_to audit.checklistname, checklist_path(audit.checklist) %></td>
+                <td><%= audit.updated_at %></td>
+                <td><%= link_to "Edit" %></td>
+                <td><%= link_to "Delete" %></td>
+            </tr>
         <% end %>
-    </ul>
+    </table>
+    <%= will_paginate @audits, renderer: BootstrapPagination::Rails %>
 <% else %>
-    <h3>No audits (</h3>
+    <h3 class="center">No audits</h3>
 <% end %>
-
-<%= will_paginate @audits, renderer: BootstrapPagination::Rails %>

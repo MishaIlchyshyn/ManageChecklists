@@ -1,3 +1,5 @@
+<%= render 'shared/errors', object: @audit, nested_models: [ @answer ] %>
+
 <% if @checklist.audit.nil? %>
     <%= form_for @audit do |f| %>
         <%= f.hidden_field :checklistname, :value => @checklist.title %>
@@ -5,22 +7,23 @@
 
         <% @checklist.questions.each do |question| %>
             <%= f.fields_for :answers do |a|  %>           
-                <p>title: <%= question.title %></p>
-                <p>description: <%= question.description %></p>
-                <p><%= a.select :answer, options_for_select(["yes", "no", "NAN"]), :required => true %></p>
-                <p>
-                    <%= a.label :comment %><br>
-                    <%= a.text_area :comment, :required => true %>
-                </p>
-                
-                <%= a.hidden_field :question_id, :value => question.id %>
+                <div class="audit">
+                    <p>title: <%= question.title %></p>
+                    <p>description: <%= question.description %></p>
+                    <p><%= a.select :answer, options_for_select(["yes", "no", "NA"]), :required => true %></p>
+                    <p>
+                        <%= a.label :comment %><br>
+                        <%= a.text_area :comment, :required => true %>
+                    </p>
+                    
+                    <%= a.hidden_field :question_id, :value => question.id %>
+                </div>
             <% end %>
         <% end %>
 
-        <%= f.submit "Submit" %>
+        <%= f.submit "Create", class: "waves-effect waves-light btn" %>
         <%= link_to "Cancel", audits_path %>
     <% end %>
 <% else %>
-    <h3>Checklist has audit!</h3>
-    <%= link_to "Cancel", audits_path %>
+    <h4 class="center">Checklist has audit!</h4>
 <% end %>
