@@ -1,30 +1,35 @@
 <%= render 'shared/errors', object: @checklist, nested_models: [ @question ] %>
 
-<%= form_for @checklist do |f| %>
-    <p>
-        <%= f.label :title, "title" %><br>
-        <%= f.text_field :title, :required => true %>
-    </p>
-
-    <p>
-        <%= f.label :description, "description" %><br>
-        <%= f.text_area :description, :required => true %>
-    </p>
-
-    <div>
-        <p><strong>Questions:</strong></p>
-
-        <div class="checklists">
-            <%= f.fields_for :questions do |question| %>
-                <%= render 'question_fields', f: question %>
-            <% end %>
-
-            <div class="links">
-                <%= link_to_add_association "add question", f, :questions %>
+<div class="row">
+    <%= form_for @checklist, html: {:class => "form"} do |f| %>
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.text_field :title, id: "title", class: "validate", :required => true %>
+                <%= f.label :title, "title", for: "title" %><br>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <%= f.text_field :description, id: "description", class: "validate", :required => true %>
+                <%= f.label :description, "description", for: "description" %><br>
+            </div>
+        </div>
 
-    <%= f.submit "Save" %>
-    <%= link_to "Cancel", checklists_path %>
-<% end %>
+
+        <h5>Questions</h5>
+        <%= f.fields_for :questions do |question| %>
+            <%= render 'question_fields', f: question %>
+        <% end %>
+
+        <div class="links add-question col s12">
+            <%= link_to_add_association '<i class="small material-icons">add</i>'.html_safe, f, :questions, 
+                class: "btn-floating btn-small waves-effect waves-light red", title: "Add Question"
+            %>
+        </div>
+
+        <div class="col s12">
+            <%= f.submit "Save", class: "waves-effect waves-light btn" %>
+            <%= link_to "Cancel", checklists_path %>
+        </div>
+    <% end %>
+</div>

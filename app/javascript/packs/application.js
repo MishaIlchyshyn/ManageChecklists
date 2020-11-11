@@ -19,6 +19,8 @@ require("@nathanvda/cocoon");
 // const imagePath = (name) => images(name, true)
 
 import "bootstrap";
+import "./stylesheets/application";
+import "materialize-css/dist/js/materialize";
 
 window.$ = window.JQuery = JQuery;
 

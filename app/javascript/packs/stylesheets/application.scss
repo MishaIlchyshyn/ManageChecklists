@@ -1,1 +1,50 @@
 @import "~bootstrap/scss/bootstrap"; // never forget the semicolon at the end
+@import "materialize-css/dist/css/materialize";
+
+.strong {
+  font-weight: bold;
+}
+
+.add-question {
+  margin: 10px;
+}
+
+.checklist-action {
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  max-height: 42%;
+}
+
+.fill-checklist-btn {
+  margin-top: 20px;
+}
+
+.form {
+  width: 100%;
+}
+
+select {
+  display: block;
+}
+
+.audit {
+  border: 1px solid #e65151;
+  padding: 25px;
+  margin: 25px;
+  border-radius: 10px;
+}
+
+.audit-form {
+  border: 1px solid #bf9a9a;
+  margin: 50px;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}

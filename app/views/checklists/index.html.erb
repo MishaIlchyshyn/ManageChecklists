@@ -1,32 +1,11 @@
-<h1>Checklists:</h1>
-
-<%= link_to "Home",  root_path%>
-<%= link_to "Audits", audits_path %>
-<%= link_to "New checklist", user_signed_in? ? new_checklist_path : new_user_session_path %>
-<% if user_signed_in? %>
-    <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
-<% end %>
+<h2 class="center">Checklists</h2>
 
 <% if @checklists.any? %>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-        </tr>
-        <% @checklists.each do |checklist| %>
-            <tr>
-                <td><%= checklist.title %></td>
-                <td><%= checklist.description %></td>
-                <td><%= link_to "Show", checklist_path(checklist) %></td>
-                <td><%= link_to "Remove", checklist_path(checklist), method: :delete, data: { confirm: "Are you sure?" } %></td>
-            </tr>
-        <% end %>
-    </table>
+    <% @checklists.each do |checklist| %>
+        <%= render "partials/card_checklist", checklist: checklist %>   
+    <% end %>
 
-    <%= will_paginate @checklists, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @checklists, renderer: BootstrapPagination::Rails, class: "pagination" %>
 <% else %>
-    <h3>You don't have a checklist</h2>
+    <h3 class="center">You don't have a checklist</h2>
 <% end %>
-

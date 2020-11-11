@@ -1,9 +1,13 @@
 <div class="nested-fields">
-    <%= f.label :title %>
-    <%= f.text_field :title, :required => true %>
-
-    <%= f.label :description %>
-    <%= f.text_area :description, :required => true %>
-
-    <%= link_to_remove_association "remove", f %>
+    <div class="input-field col s5">
+        <%= f.text_field :title, id: "title_question", class: "validate", :required => true %>
+        <%= f.label :title, "title", for: "title_question" %><br>
+    </div>
+    <div class="input-field col s5">
+        <%= f.text_field :description, id: "description_question", class: "validate", :required => true %>
+        <%= f.label :description, "description", for: "description_question" %><br>
+    </div>
+    <div class="input-field col s2">
+        <%= link_to_remove_association '<i class="small material-icons">delete</i>'.html_safe, f, class: "right" %> 
+    </div>
 </div>

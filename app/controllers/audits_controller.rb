@@ -14,6 +14,7 @@ class AuditsController < ApplicationController
     def create
         @audit = Audit.new(audit_params)
         if @audit.save
+            flash[:notice] = "Audit was created"    
             redirect_to audits_path
         else 
             render :new

@@ -1,0 +1,28 @@
+<nav>
+    <div class="nav-wrapper">
+        <%= link_to "Manage", root_path, class: "brand-logo" %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <%= link_to "Checklists", checklists_path %>
+            </li>
+            <li>
+                <%= link_to "Audits", audits_path %>
+            </li>
+            <li>
+                <%= link_to "Create Checklist", user_signed_in? ? new_checklist_path : user_session_path %>
+            </li>
+            <% if user_signed_in? %>
+                <li>
+                    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+                </li>
+            <% else %>
+                <li>
+                    <%= link_to 'Login', new_user_session_path %>  
+                </li>
+                <li>
+                    <%= link_to 'Register', new_user_registration_path %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</nav>
