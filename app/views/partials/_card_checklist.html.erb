@@ -7,6 +7,15 @@
         </div>
         <div class="card-action checklist-action">
             <%= link_to "Show", checklist_path(checklist) %>
+
+            <% if user_signed_in? %>
+                <%- unless current_user.publish_checklists.exists?(id: checklist.id) -%>
+                    <%= link_to 'Add to publishes', publish_checklists_path(checklist_id: checklist.id), method: :post %>
+                <%- else -%>
+                    <%= link_to 'Remove from publishes', publish_checklist_path(checklist), method: :delete %>
+                <%- end -%>   
+            <% end %> 
+
             <% if user_signed_in? %>
                 <%= link_to '<i class="material-icons">delete</i>'.html_safe, checklist_path(checklist), method: :delete, data: { confirm: "Are you sure?" }, title: "delete" %>        
             <% else %>

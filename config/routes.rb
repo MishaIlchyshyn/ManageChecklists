@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root "pages#index"
 
+  resources :publish_checklists, only: [:create, :destroy]
+
   resources :audits
 
   resources :checklists do

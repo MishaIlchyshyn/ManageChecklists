@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_08_125046) do
+ActiveRecord::Schema.define(version: 2020_11_11_113818) do
 
   create_table "answers", force: :cascade do |t|
     t.string "answer"
@@ -36,6 +36,16 @@ ActiveRecord::Schema.define(version: 2020_11_08_125046) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "publishes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "published_type"
+    t.integer "published_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["published_type", "published_id"], name: "index_publishes_on_published_type_and_published_id"
+    t.index ["user_id"], name: "index_publishes_on_user_id"
   end
 
   create_table "questions", force: :cascade do |t|
